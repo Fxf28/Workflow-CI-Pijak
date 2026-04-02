@@ -27,7 +27,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          pip install mlflow pandas numpy scikit-learn joblib matplotlib fastapi uvicorn
+          pip install mlflow pandas numpy scikit-learn joblib matplotlib
 
       - name: Initialize conda
         run: conda init bash

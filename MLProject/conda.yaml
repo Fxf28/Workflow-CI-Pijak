@@ -13,5 +13,3 @@ dependencies:
       - mlflow
       - joblib
       - matplotlib
-      - fastapi
-      - uvicorn
