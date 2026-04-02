@@ -1,0 +1,21 @@
+name: fatalities-model
+
+conda_env: conda.yaml
+
+entry_points:
+
+  train:
+    parameters:
+      data_path: {type: str, default: "fatalities_preprocessed"}
+    command: >
+      python modelling.py
+      --mode train
+      --data_path {data_path}
+
+  evaluate:
+    parameters:
+      data_path: {type: str, default: "fatalities_preprocessed"}
+    command: >
+      python modelling.py
+      --mode evaluate
+      --data_path {data_path}

@@ -1,0 +1,23 @@
+artifact_path: file:C:/Users/LENOVO/SMSL_faiz-fajar/Workflow-CI/MLproject/mlruns/0/models/m-717f3204913d4ead9b183de21c4a420e/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.13
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.8.0
+    skops_trusted_types: null
+mlflow_version: 3.10.1
+model_id: m-717f3204913d4ead9b183de21c4a420e
+model_size_bytes: 3532
+model_uuid: m-717f3204913d4ead9b183de21c4a420e
+prompts: null
+run_id: 3eaec4e5dad345268a5961eb5b0e46d2
+utc_time_created: '2026-04-02 02:34:27.970282'
