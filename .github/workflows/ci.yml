@@ -29,10 +29,14 @@ jobs:
           pip install --upgrade pip
           pip install mlflow pandas numpy scikit-learn joblib matplotlib fastapi uvicorn
 
+      - name: Initialize conda
+        run: conda init bash
+
       - name: Debug folder structure
         run: ls -R
 
       - name: Run MLflow Project
+        shell: bash -l {0}
         run: |
           cd MLProject
           mlflow run . -e train
