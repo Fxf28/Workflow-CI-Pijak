@@ -130,56 +130,51 @@ def log_artifacts(y_test, y_pred, y_proba, precision_curve, recall_curve):
 # =========================
 if MODE == "train":
 
-    grid = build_model()
-    grid.fit(X_train, y_train)
+    with mlflow.start_run():  # 🔥 WAJIB
 
-    model = grid.best_estimator_
+        grid = build_model()
+        grid.fit(X_train, y_train)
 
-    metrics, y_pred, y_proba, precision_curve, recall_curve = evaluate_model(
-        model, X_test, y_test
-    )
+        model = grid.best_estimator_
 
-    # Log best params
-    mlflow.log_params(grid.best_params_)
+        metrics, y_pred, y_proba, precision_curve, recall_curve = evaluate_model(
+            model, X_test, y_test
+        )
 
-    # Log metrics
-    for k, v in metrics.items():
-        mlflow.log_metric(k, v)
+        mlflow.log_params(grid.best_params_)
 
-    # Artifacts
-    log_artifacts(y_test, y_pred, y_proba, precision_curve, recall_curve)
+        for k, v in metrics.items():
+            mlflow.log_metric(k, v)
 
-    # Feature Importance
-    importances = model.feature_importances_
-    feat_df = pd.DataFrame({
-        "feature": X_train.columns,
-        "importance": importances
-    }).sort_values(by="importance", ascending=False)
+        log_artifacts(y_test, y_pred, y_proba, precision_curve, recall_curve)
 
-    feat_df.to_csv("outputs/feature_importance.csv", index=False)
-    mlflow.log_artifact("outputs/feature_importance.csv")
+        # Feature importance
+        importances = model.feature_importances_
+        feat_df = pd.DataFrame({
+            "feature": X_train.columns,
+            "importance": importances
+        }).sort_values(by="importance", ascending=False)
 
-    # Save raw model (optional)
-    joblib.dump(model, "outputs/model.pkl")
-    mlflow.log_artifact("outputs/model.pkl")
+        feat_df.to_csv("outputs/feature_importance.csv", index=False)
+        mlflow.log_artifact("outputs/feature_importance.csv")
 
-    # 🔥 IMPORTANT: ONLY USE log_model (NO save_model)
-    mlflow.sklearn.log_model(
-        model,
-        "model",
-        pip_requirements=[
-            "mlflow",
-            "scikit-learn",
-            "pandas",
-            "numpy",
-            "fastapi",
-            "starlette<0.40.0"
-        ]
-    )
+        # 🔥 INI YANG PENTING
+        mlflow.sklearn.log_model(
+            model,
+            name="model",
+            pip_requirements=[
+                "mlflow",
+                "scikit-learn",
+                "pandas",
+                "numpy",
+                "fastapi",
+                "starlette<0.40.0"
+            ]
+        )
 
-    print("\n=== TRAINING COMPLETE ===")
-    for k, v in metrics.items():
-        print(f"{k}: {v:.4f}")
+        print("\n=== TRAINING COMPLETE ===")
+        for k, v in metrics.items():
+            print(f"{k}: {v:.4f}")
 
 # =========================
 # EVALUATE MODE
