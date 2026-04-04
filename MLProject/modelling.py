@@ -14,7 +14,6 @@ import matplotlib.pyplot as plt
 import os
 import joblib
 import argparse
-import shutil
 
 # =========================
 # ARGUMENT PARSER
@@ -160,25 +159,23 @@ if MODE == "train":
     feat_df.to_csv("outputs/feature_importance.csv", index=False)
     mlflow.log_artifact("outputs/feature_importance.csv")
 
-    # Save model
+    # Save raw model (optional)
     joblib.dump(model, "outputs/model.pkl")
     mlflow.log_artifact("outputs/model.pkl")
 
+    # 🔥 IMPORTANT: ONLY USE log_model (NO save_model)
     mlflow.sklearn.log_model(
-    model,
-    "model",
-    pip_requirements=[
-        "mlflow",
-        "scikit-learn",
-        "pandas",
-        "numpy"
-    ]
-)
-
-    if os.path.exists("outputs/mlflow_model"):
-        shutil.rmtree("outputs/mlflow_model")
-
-    mlflow.sklearn.save_model(model, "outputs/mlflow_model")
+        model,
+        "model",
+        pip_requirements=[
+            "mlflow",
+            "scikit-learn",
+            "pandas",
+            "numpy",
+            "fastapi",
+            "starlette<0.40.0"
+        ]
+    )
 
     print("\n=== TRAINING COMPLETE ===")
     for k, v in metrics.items():

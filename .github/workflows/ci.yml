@@ -3,7 +3,6 @@ name: MLflow CI Pipeline
 on:
   push:
     branches: ["main"]
-  workflow_dispatch:
 
 jobs:
   train:
@@ -18,47 +17,29 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Setup Miniconda
-        uses: conda-incubator/setup-miniconda@v3
-        with:
-          auto-update-conda: true
-          python-version: "3.12"
-
       - name: Install dependencies
         run: |
           pip install --upgrade pip
           pip install mlflow pandas numpy scikit-learn joblib matplotlib
 
-      - name: Initialize conda
-        run: conda init bash
-
-      - name: Debug folder structure
-        run: ls -R
-
       - name: Run MLflow Project
-        shell: bash -l {0}
         run: |
           cd MLProject
-          mlflow run . -e train
+          mlflow run . -e train --env-manager=local
 
-      - name: Check outputs
+      - name: Get latest run_id
         run: |
-          ls MLProject/outputs
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: model-artifacts
-          path: MLProject/outputs/
-
-      - name: Clean Docker cache
-        run: |
-          docker system prune -a -f
+          cd MLProject
+          RUN_ID=$(ls -td mlruns/*/*/ | head -n 1 | cut -d'/' -f3)
+          echo "RUN_ID=$RUN_ID" >> $GITHUB_ENV
+          echo "RUN_ID = $RUN_ID"
 
       - name: Build Docker Image
         run: |
           cd MLProject
-          mlflow models build-docker -m "outputs/mlflow_model" -n "fatalities-model"
+          mlflow models build-docker \
+            --model-uri "runs:/$RUN_ID/model" \
+            --name fatalities-model
 
       - name: Login Docker Hub
         run: |
