@@ -164,7 +164,16 @@ if MODE == "train":
     joblib.dump(model, "outputs/model.pkl")
     mlflow.log_artifact("outputs/model.pkl")
 
-    mlflow.sklearn.log_model(model, "model")
+    mlflow.sklearn.log_model(
+    model,
+    "model",
+    pip_requirements=[
+        "mlflow",
+        "scikit-learn",
+        "pandas",
+        "numpy"
+    ]
+)
 
     if os.path.exists("outputs/mlflow_model"):
         shutil.rmtree("outputs/mlflow_model")
