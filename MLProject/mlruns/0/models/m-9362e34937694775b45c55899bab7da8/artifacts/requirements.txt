@@ -1,6 +1,0 @@
-mlflow
-scikit-learn
-pandas
-numpy
-fastapi
-starlette<0.40.0

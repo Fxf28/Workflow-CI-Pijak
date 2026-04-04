@@ -158,10 +158,11 @@ if MODE == "train":
         feat_df.to_csv("outputs/feature_importance.csv", index=False)
         mlflow.log_artifact("outputs/feature_importance.csv")
 
-        # 🔥 INI YANG PENTING
         mlflow.sklearn.log_model(
             model,
             name="model",
+            input_example=X_train,
+            registered_model_name="model",
             pip_requirements=[
                 "mlflow",
                 "scikit-learn",

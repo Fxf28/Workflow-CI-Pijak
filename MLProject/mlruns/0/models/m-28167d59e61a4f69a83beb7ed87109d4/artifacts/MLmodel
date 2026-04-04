@@ -1,0 +1,99 @@
+artifact_path: file:C:/Users/LENOVO/SMSL_faiz-fajar/workflow-ci/mlproject/mlruns/0/models/m-28167d59e61a4f69a83beb7ed87109d4/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.13
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.8.0
+    skops_trusted_types: null
+is_signature_from_type_hint: false
+mlflow_version: 3.10.1
+model_id: m-28167d59e61a4f69a83beb7ed87109d4
+model_size_bytes: 32545103
+model_uuid: m-28167d59e61a4f69a83beb7ed87109d4
+prompts: null
+run_id: 3b775decea2e4a8692f860131a96c01c
+saved_input_example_info:
+  artifact_path: input_example.json
+  pandas_orient: split
+  serving_input_path: serving_input_example.json
+  type: dataframe
+signature:
+  inputs: '[{"type": "double", "name": "age", "required": true}, {"type": "double",
+    "name": "event_year", "required": true}, {"type": "double", "name": "event_month",
+    "required": true}, {"type": "double", "name": "gender_M", "required": true}, {"type":
+    "double", "name": "gender_Unknown", "required": true}, {"type": "double", "name":
+    "citizenship_Jordanian", "required": true}, {"type": "double", "name": "citizenship_Palestinian",
+    "required": true}, {"type": "double", "name": "event_location_region_Israel",
+    "required": true}, {"type": "double", "name": "event_location_region_West Bank",
+    "required": true}, {"type": "double", "name": "event_location_district_Deir al-Balah",
+    "required": true}, {"type": "double", "name": "event_location_district_East Jerusalem",
+    "required": true}, {"type": "double", "name": "event_location_district_Gaza",
+    "required": true}, {"type": "double", "name": "event_location_district_Gush Katif",
+    "required": true}, {"type": "double", "name": "event_location_district_Hebron",
+    "required": true}, {"type": "double", "name": "event_location_district_Israel",
+    "required": true}, {"type": "double", "name": "event_location_district_Jenin",
+    "required": true}, {"type": "double", "name": "event_location_district_Jericho",
+    "required": true}, {"type": "double", "name": "event_location_district_Khan Yunis",
+    "required": true}, {"type": "double", "name": "event_location_district_Nablus",
+    "required": true}, {"type": "double", "name": "event_location_district_North Gaza",
+    "required": true}, {"type": "double", "name": "event_location_district_Qalqiliya",
+    "required": true}, {"type": "double", "name": "event_location_district_Rafah",
+    "required": true}, {"type": "double", "name": "event_location_district_Ramallah
+    and al-Bira", "required": true}, {"type": "double", "name": "event_location_district_Salfit",
+    "required": true}, {"type": "double", "name": "event_location_district_Tubas",
+    "required": true}, {"type": "double", "name": "event_location_district_Tulkarm",
+    "required": true}, {"type": "double", "name": "event_location_district_al-Quds",
+    "required": true}, {"type": "double", "name": "type_of_injury_beating", "required":
+    true}, {"type": "double", "name": "type_of_injury_explosion", "required": true},
+    {"type": "double", "name": "type_of_injury_fire", "required": true}, {"type":
+    "double", "name": "type_of_injury_gunfire", "required": true}, {"type": "double",
+    "name": "type_of_injury_hit by a vehicle", "required": true}, {"type": "double",
+    "name": "type_of_injury_house demolition", "required": true}, {"type": "double",
+    "name": "type_of_injury_shelling", "required": true}, {"type": "double", "name":
+    "type_of_injury_stabbing", "required": true}, {"type": "double", "name": "type_of_injury_stones
+    throwing", "required": true}, {"type": "double", "name": "killed_by_Israeli security
+    forces", "required": true}, {"type": "double", "name": "place_of_residence_district_Deir
+    al-Balah", "required": true}, {"type": "double", "name": "place_of_residence_district_East
+    Jerusalem", "required": true}, {"type": "double", "name": "place_of_residence_district_Gaza",
+    "required": true}, {"type": "double", "name": "place_of_residence_district_Gush
+    Katif", "required": true}, {"type": "double", "name": "place_of_residence_district_Hebron",
+    "required": true}, {"type": "double", "name": "place_of_residence_district_Israel",
+    "required": true}, {"type": "double", "name": "place_of_residence_district_Jenin",
+    "required": true}, {"type": "double", "name": "place_of_residence_district_Jericho",
+    "required": true}, {"type": "double", "name": "place_of_residence_district_Khan
+    Yunis", "required": true}, {"type": "double", "name": "place_of_residence_district_Nablus",
+    "required": true}, {"type": "double", "name": "place_of_residence_district_North
+    Gaza", "required": true}, {"type": "double", "name": "place_of_residence_district_Qalqiliya",
+    "required": true}, {"type": "double", "name": "place_of_residence_district_Rafah",
+    "required": true}, {"type": "double", "name": "place_of_residence_district_Ramallah
+    and al-Bira", "required": true}, {"type": "double", "name": "place_of_residence_district_Salfit",
+    "required": true}, {"type": "double", "name": "place_of_residence_district_Tubas",
+    "required": true}, {"type": "double", "name": "place_of_residence_district_Tulkarm",
+    "required": true}, {"type": "double", "name": "place_of_residence_district_Unknown",
+    "required": true}, {"type": "double", "name": "place_of_residence_district_al-Quds",
+    "required": true}, {"type": "double", "name": "ammunition_bomb", "required": true},
+    {"type": "double", "name": "ammunition_car bomb", "required": true}, {"type":
+    "double", "name": "ammunition_flare bomb", "required": true}, {"type": "double",
+    "name": "ammunition_flechette shells", "required": true}, {"type": "double", "name":
+    "ammunition_grenade", "required": true}, {"type": "double", "name": "ammunition_knife",
+    "required": true}, {"type": "double", "name": "ammunition_live ammunition", "required":
+    true}, {"type": "double", "name": "ammunition_missile", "required": true}, {"type":
+    "double", "name": "ammunition_mortar fire", "required": true}, {"type": "double",
+    "name": "ammunition_phosphorus shell", "required": true}, {"type": "double", "name":
+    "ammunition_rubber-coated metal bullets", "required": true}, {"type": "double",
+    "name": "ammunition_shell", "required": true}, {"type": "double", "name": "ammunition_stun
+    grenade", "required": true}, {"type": "double", "name": "ammunition_teargas canister",
+    "required": true}]'
+  outputs: '[{"type": "double", "required": true}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2026-04-04 08:29:32.407008'
