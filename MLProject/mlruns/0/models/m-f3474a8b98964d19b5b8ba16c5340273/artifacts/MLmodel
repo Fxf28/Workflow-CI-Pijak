@@ -1,4 +1,4 @@
-artifact_path: file:C:/Users/LENOVO/SMSL_faiz-fajar/Workflow-CI/MLProject/mlruns/0/models/m-166bbd7e78394da0a79184fc269d8ba8/artifacts
+artifact_path: file:C:/Users/LENOVO/SMSL_faiz-fajar/workflow-ci/mlproject/mlruns/0/models/m-f3474a8b98964d19b5b8ba16c5340273/artifacts
 flavors:
   python_function:
     env:
@@ -15,9 +15,9 @@ flavors:
     sklearn_version: 1.8.0
     skops_trusted_types: null
 mlflow_version: 3.10.1
-model_id: m-166bbd7e78394da0a79184fc269d8ba8
+model_id: m-f3474a8b98964d19b5b8ba16c5340273
 model_size_bytes: 23530369
-model_uuid: m-166bbd7e78394da0a79184fc269d8ba8
+model_uuid: m-f3474a8b98964d19b5b8ba16c5340273
 prompts: null
-run_id: bd38145a902a4c7eb06f0b0f8a4edf25
-utc_time_created: '2026-04-02 04:02:21.919428'
+run_id: ed6ca70699a34bafb8a6703f3039da1d
+utc_time_created: '2026-04-04 04:50:10.003214'
