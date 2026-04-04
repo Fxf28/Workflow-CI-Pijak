@@ -27,12 +27,12 @@ jobs:
           cd MLProject
           mlflow run . -e train --env-manager=local
 
-      - name: Get latest run_id
+      - name: Get latest MLflow run_id
         run: |
           cd MLProject
-          RUN_ID=$(mlflow runs list --experiment-id 0 -o json | python3 -c "import sys, json; data = json.load(sys.stdin); print(data[0]['run_id'] if data else '')")
+          RUN_ID=$(ls -td mlruns/0/*/ | head -n 1 | cut -d'/' -f3)
           echo "RUN_ID=$RUN_ID" >> $GITHUB_ENV
-          echo "RUN_ID = $RUN_ID""
+          echo "Latest run_id: $RUN_ID"
 
       - name: Build Docker Image
         run: |
