@@ -54,7 +54,7 @@ jobs:
       - name: Build Docker Image
         run: |
           cd MLProject
-          mlflow models build-docker -m outputs/mlflow_model -n fatalities-model --no-cache
+          mlflow models build-docker -m "outputs/mlflow_model" -n "fatalities-model"
 
       - name: Login Docker Hub
         run: |
